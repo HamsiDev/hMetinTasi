@@ -1,0 +1,7 @@
+name: HMetinTasi
+version: '${project.version}'
+main: me.hamsi.hmetintasi.HMetinTasi
+api-version: 1.18
+authors: [ HamsiDev ]
+description: Metin Taşı Plugini
+website: https://hamsi.dev
