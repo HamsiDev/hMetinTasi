@@ -15,6 +15,8 @@ public final class HMetinTasi extends JavaPlugin {
     @Override
     public void onEnable() {
 
+        HCore.initialize(this);
+
         this.manager = new ConfigManager(this);
         this.metinManager = new MetinManager(this);
 

@@ -59,7 +59,7 @@ public class MetinCommand implements HCommandAdapter {
             permissionMessage = "Yetkin yok"
     )
     public void removeCommand(Player player, String[] args){
-        Location location = plugin.getMetinManager().location();
+        Location location = plugin.getMetinManager().getlocation();
 
         plugin.getManager().getLocationconfig().set("Locations.World", "");
         plugin.getManager().getLocationconfig().set("Locations.X", "");

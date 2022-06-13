@@ -18,7 +18,7 @@ public class MetinManager {
     public int health = 20;
 
 
-    public Location location(){
+    public Location getlocation(){
         Location location = new Location(Bukkit.getWorld(plugin.getManager().getLocationconfig().getString("Locations.World")),
                 plugin.getManager().getLocationconfig().getDouble("Locations.X"),
                 plugin.getManager().getLocationconfig().getDouble("Locations.Y"),
@@ -27,13 +27,19 @@ public class MetinManager {
         return location;
     }
 
-    public void hologram(){
-        Location location = plugin.getMetinManager().location();
+    public HHologram hologram(){
+        Location location = plugin.getMetinManager().getlocation();
+        location.add(0.5, 1, 0.5);
 
-        HHologram hologram = HCore.createHologram("Metin", location);
-        hologram.addLine("sa").addLine("as");
-        hologram.canEveryoneSee();
+        HHologram hologram = HCore.createHologram("Metin", location).
+                addLine("Metin Taşı").
+                addLine(" ").
+                addLine("Can "+this.getHealth()).showEveryone(true);
+
+        return hologram;
     }
+
+
 
     public int getHealth() {
         return health;
