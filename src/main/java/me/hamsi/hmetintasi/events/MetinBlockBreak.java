@@ -24,7 +24,7 @@ public class MetinBlockBreak implements Listener {
         if (plugin.getManager().getLocationconfig().getString("Locations.World").isEmpty()) return;
         if (!(event.getBlock().getLocation().getWorld().getName().equalsIgnoreCase(player.getWorld().getName()))) return;
         if (!(event.getBlock().getLocation().equals(plugin.getMetinManager().getlocation()))) return;
-        if (plugin.getMetinManager().getHealth() == 0){
+        if (plugin.getMetinManager().getHealth() == 1){
             if (plugin.getMetinManager().isTimeOn()){
 
             }
@@ -37,7 +37,7 @@ public class MetinBlockBreak implements Listener {
 
         plugin.getMetinManager().decreaseHealth(1);
 
-        plugin.getMetinManager().hologram().setLine(2, "Can "+plugin.getMetinManager().getHealth());
+        plugin.getMetinManager().hologram().setLine(2, "Health "+plugin.getMetinManager().getHealth());
 
         player.sendMessage(String.valueOf(plugin.getMetinManager().getHealth()));
 

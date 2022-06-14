@@ -67,6 +67,7 @@ public class MetinCommand implements HCommandAdapter {
         plugin.getManager().getLocationconfig().set("Locations.Z", "");
         plugin.getManager().saveConfig();
 
+        plugin.getMetinManager().hologram().delete();
         location.getBlock().setType(Material.AIR);
         plugin.getMetinManager().setHealth(20);
 

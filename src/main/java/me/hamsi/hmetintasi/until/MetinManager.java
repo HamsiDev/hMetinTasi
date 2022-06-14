@@ -17,7 +17,7 @@ public class MetinManager {
     }
 
     public int health = 20;
-    public int time = 0;
+    public int time = 10;
 
     public boolean timeOn = false;
 
@@ -36,20 +36,15 @@ public class MetinManager {
         location.add(0.5, 1, 0.5);
 
         HHologram hologram = HCore.createHologram("Metin", location).
-                addLine("Metin Taşı").
+                addLine("Metin Stone").
                 addLine(" ").
-                addLine("Can "+this.getHealth()).showEveryone(true);
+                addLine("Health "+this.getHealth()).showEveryone(true);
 
         return hologram;
     }
 
-    public HScheduler timer(){
-        if (plugin.getMetinManager().getTime() == 0){
-            plugin.getMetinManager().setHealth(20);
-            plugin.getMetinManager().setTimeOn(false);
-        }
-        HCore.syncScheduler().every(20).run(() -> plugin.getMetinManager().upTime(1));
-        return null;
+    public void timer(){
+        HCore.syncScheduler().every(20).run(() -> plugin.getMetinManager().downTime(1));
     }
 
 
@@ -74,8 +69,15 @@ public class MetinManager {
         this.time = time;
     }
 
-    public void upTime(int time) {
-        this.time += time;
+    public void downTime(int time) {
+        plugin.getMetinManager().hologram().setLine(2, "Time "+plugin.getMetinManager().getTime());
+        System.out.println(plugin.getMetinManager().getTime());
+        if (plugin.getMetinManager().getTime() == 0){
+            plugin.getMetinManager().setHealth(20);
+            plugin.getMetinManager().hologram().setLine(2, "Health "+this.getHealth());
+            plugin.getMetinManager().setTimeOn(false);
+        }
+        this.time -= time;
     }
 
     public boolean isTimeOn() {
