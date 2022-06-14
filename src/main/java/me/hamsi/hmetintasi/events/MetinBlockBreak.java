@@ -31,6 +31,7 @@ public class MetinBlockBreak implements Listener {
             else {
                 Location location = plugin.getMetinManager().getlocation();
                 location.getBlock().setType(Material.BEDROCK);
+                plugin.getMetinManager().setTime(30);
                 plugin.getMetinManager().timer();
             }
         }

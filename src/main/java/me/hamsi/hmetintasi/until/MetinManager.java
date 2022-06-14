@@ -6,6 +6,7 @@ import com.hakan.core.scheduler.HScheduler;
 import me.hamsi.hmetintasi.HMetinTasi;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 
 
 public class MetinManager {
@@ -44,7 +45,7 @@ public class MetinManager {
     }
 
     public void timer(){
-        HCore.syncScheduler().every(20).run(() -> plugin.getMetinManager().downTime(1));
+        HCore.syncScheduler().every(20).limit(30).run(() -> plugin.getMetinManager().downTime(1));
     }
 
 
@@ -70,12 +71,12 @@ public class MetinManager {
     }
 
     public void downTime(int time) {
-        plugin.getMetinManager().hologram().setLine(2, "Time "+plugin.getMetinManager().getTime());
-        System.out.println(plugin.getMetinManager().getTime());
-        if (plugin.getMetinManager().getTime() == 0){
-            plugin.getMetinManager().setHealth(20);
-            plugin.getMetinManager().hologram().setLine(2, "Health "+this.getHealth());
-            plugin.getMetinManager().setTimeOn(false);
+        hologram().setLine(2, "Time "+getTime());
+        if (getTime() == 1){
+            getlocation().getBlock().setType(Material.END_STONE);
+            setHealth(20);
+            hologram().setLine(2, "Health "+this.getHealth());
+            setTimeOn(false);
         }
         this.time -= time;
     }

@@ -20,7 +20,7 @@ public final class HMetinTasi extends JavaPlugin {
         this.manager = new ConfigManager(this);
         this.metinManager = new MetinManager(this);
 
-        this.getServer().getPluginManager().registerEvents(new MetinBlockBreak(this), this);
+        HCore.registerListeners(new MetinBlockBreak(this));
 
         HCore.registerCommands(new MetinCommand(this));
     }
