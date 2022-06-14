@@ -2,6 +2,7 @@ package me.hamsi.hmetintasi.until;
 
 import com.hakan.core.HCore;
 import com.hakan.core.hologram.HHologram;
+import com.hakan.core.scheduler.HScheduler;
 import me.hamsi.hmetintasi.HMetinTasi;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -16,6 +17,9 @@ public class MetinManager {
     }
 
     public int health = 20;
+    public int time = 0;
+
+    public boolean timeOn = false;
 
 
     public Location getlocation(){
@@ -39,6 +43,15 @@ public class MetinManager {
         return hologram;
     }
 
+    public HScheduler timer(){
+        if (plugin.getMetinManager().getTime() == 0){
+            plugin.getMetinManager().setHealth(20);
+            plugin.getMetinManager().setTimeOn(false);
+        }
+        HCore.syncScheduler().every(20).run(() -> plugin.getMetinManager().upTime(1));
+        return null;
+    }
+
 
 
     public int getHealth() {
@@ -51,5 +64,25 @@ public class MetinManager {
 
     public void decreaseHealth(int metinHealth) {
         this.health -= metinHealth;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    public void upTime(int time) {
+        this.time += time;
+    }
+
+    public boolean isTimeOn() {
+        return timeOn;
+    }
+
+    public void setTimeOn(boolean timeOn) {
+        this.timeOn = timeOn;
     }
 }

@@ -2,6 +2,8 @@ package me.hamsi.hmetintasi.events;
 
 import com.hakan.core.HCore;
 import me.hamsi.hmetintasi.HMetinTasi;
+import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -23,10 +25,14 @@ public class MetinBlockBreak implements Listener {
         if (!(event.getBlock().getLocation().getWorld().getName().equalsIgnoreCase(player.getWorld().getName()))) return;
         if (!(event.getBlock().getLocation().equals(plugin.getMetinManager().getlocation()))) return;
         if (plugin.getMetinManager().getHealth() == 0){
-            int time = 30;
-            HCore.syncScheduler().every(20)
-                    .run(() -> time--);
+            if (plugin.getMetinManager().isTimeOn()){
 
+            }
+            else {
+                Location location = plugin.getMetinManager().getlocation();
+                location.getBlock().setType(Material.BEDROCK);
+                plugin.getMetinManager().timer();
+            }
         }
 
         plugin.getMetinManager().decreaseHealth(1);
