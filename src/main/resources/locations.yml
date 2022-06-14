@@ -1,5 +1,15 @@
-Locations:
-  World: ""
-  X: ""
-  Y: ""
-  Z: ""
+Metin:
+  'Classic':
+    Name: "Classic Metin"
+    Material: "BEDROCK" # BEDROCK END_STONE OR...
+    Location:
+      World: ""
+      X: ""
+      Y: ""
+      Z: ""
+    Waves:
+      'Zombie':
+        Type: "ENTITY" # ENTITY - LIGHTENING - DAMAGE - POTION
+        Amount: 1
+        Title: "Guardian"
+        Title Color: "RED"

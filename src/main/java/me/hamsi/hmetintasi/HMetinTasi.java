@@ -23,6 +23,10 @@ public final class HMetinTasi extends JavaPlugin {
         HCore.registerListeners(new MetinBlockBreak(this));
 
         HCore.registerCommands(new MetinCommand(this));
+
+        if (!(manager.getLocationconfig().getString("Locations.World").isEmpty())){
+            metinManager.hologram();
+        }
     }
 
     @Override

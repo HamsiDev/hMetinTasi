@@ -6,8 +6,6 @@ import com.hakan.core.command.executors.sub.SubCommand;
 import me.hamsi.hmetintasi.HMetinTasi;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
